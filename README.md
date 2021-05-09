@@ -8,13 +8,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-VS Code should installed on machine.
-Node version v14.15.4
-MySQL Server and workbench
-Good knowledge of Node Environment
-Understanding of express framework
-Swagger for testing
-Moderate knowlege of Sequelize library
+1. VS Code should installed on machine.
+2. Node version v14.15.4
+3. MySQL Server and workbench
+4. Good knowledge of Node Environment
+5. Understanding of express framework
+6. Swagger for testing
+7. Moderate knowlege of Sequelize library
 
 ### Installing and Running the project
 
