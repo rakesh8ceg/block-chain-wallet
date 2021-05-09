@@ -1,0 +1,310 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "BlockChain API",
+      "description": "Online Block Chain REST API for Testing and Prototyping",
+      "version": "0.0.1"
+    },
+    "paths": {
+        "/" :{
+            "get" :{
+                "description": "Get default / API",
+                "responses" : {
+                    "200" : {
+                        "description" : "Success",
+                        "content" :{
+                            "application/json" :{
+                                "schema" :{
+                                    "type" :"object",
+                                    "properties" :{
+                                        "message" : {
+                                            "type" : "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/wallets" :{
+            "post" :{
+                "description": "Create A New Wallet",
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" :{
+                            "schema" :{
+                                "type" : "object",
+                                "properties" : {
+                                    "address" :{
+                                        "type" :"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "200" : {
+                        "description" : "Success",
+                        "content" :{
+                            "application/json" :{
+                                "schema" :{
+                                    "type" :"object",
+                                    "properties" :{
+                                        "message" : {
+                                            "type" : "string"
+                                        },
+                                        "wallet" : {
+                                            "type" : "object",
+                                            "properties" : {
+                                                "id" : {"type" : "number"},
+                                                "address" : {"type" : "string"}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description" : "Error: Internal Server Error",
+                        "content" :{
+                            "application/json" : {
+                                "schema" : {
+                                    "type" :"object",
+                                    "properties" : {
+                                        "message" : {"type" :"string"}
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/currencies" :{
+            "post" :{
+                "description": "Create A New Currency",
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" :{
+                            "schema" :{
+                                "type" : "object",
+                                "properties" : {
+                                    "code" :{
+                                        "type" :"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "200" : {
+                        "description" : "Success",
+                        "content" :{
+                            "application/json" :{
+                                "schema" :{
+                                    "type" :"object",
+                                    "properties" :{
+                                        "message" : {
+                                            "type" : "string"
+                                        },
+                                        "currency" : {
+                                            "type" : "object",
+                                            "properties" : {
+                                                "id" : {"type" : "number"},
+                                                "code" : {"type" : "string"}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description" : "Error: Internal Server Error",
+                        "content" :{
+                            "application/json" : {
+                                "schema" : {
+                                    "type" :"object",
+                                    "properties" : {
+                                        "message" : {"type" :"string"}
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users" :{
+            "post" :{
+                "description": "Create A New User",
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" :{
+                            "schema" :{
+                                "type" : "object",
+                                "properties" : {
+                                    "email" :{
+                                        "type" :"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "200" : {
+                        "description" : "Success",
+                        "content" :{
+                            "application/json" :{
+                                "schema" :{
+                                    "type" :"object",
+                                    "properties" :{
+                                        "message" : {
+                                            "type" : "string"
+                                        },
+                                        "user" : {
+                                            "type" : "object",
+                                            "properties" : {
+                                                "id" : {"type" : "number"},
+                                                "email" : {"type" : "string"}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description" : "Error: Internal Server Error",
+                        "content" :{
+                            "application/json" : {
+                                "schema" : {
+                                    "type" :"object",
+                                    "properties" : {
+                                        "message" : {"type" :"string"}
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/currencies/findAll" :{
+            "get" :{
+                "description" : "Get Currencies list",
+                "responses" :{
+                    "200" :{
+                        "content" :{
+                            "application/json" :{
+                                "schema" :{
+                                    "type" :"object",
+                                    "properties" :{
+                                        "message" :{"type" :"string"},
+                                        "currencies" : {"type" : "array" , "items" : { "type" : "object"}}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/wallets/findAll" :{
+            "post" :{
+                "description" : "Get Wallets associated with a user",
+                "requestBody" :{
+                    "required" : "false",
+                    "content" : {
+                        "application/json" :{
+                            "schema" :{
+                                "type" :"object",
+                                "properties" : {
+                                    "user_id" : {"type" :"number"},
+                                    "wallet_id" :{"type" :"number"},
+                                    "currency_id" : {"type" :"number"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" :{
+                    "200" :{
+                        "content" :{
+                            "application/json" :{
+                                "schema" :{
+                                    "type" :"object",
+                                    "properties" :{
+                                        "message" :{"type" :"string"},
+                                        "wallets" : {"type" : "array" , "items" : { "type" : "object"}}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/wallets/mapWallet" :{
+            "post" :{
+                "description" : "Map a wallet to user",
+                "requestBody" :{
+                    "required" : "true",
+                    "content" : {
+                        "application/json" :{
+                            "schema" :{
+                                "type" :"object",
+                                "properties" : {
+                                    "user_id" : {"type" :"number"},
+                                    "code" :{"type" :"string"},
+                                    "address" : {"type" :"string"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" :{
+                    "200" :{
+                        "content" :{
+                            "application/json" :{
+                                "schema" :{
+                                    "type" :"object",
+                                    "properties" :{
+                                        "message" :{"type" :"string"},
+                                        "wallets" : {"type" : "object"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500" : {
+                        "description" : "Error: Internal Server Error",
+                        "content" :{
+                            "application/json" : {
+                                "schema" : {
+                                    "type" :"object",
+                                    "properties" : {
+                                        "message" : {"type" :"string"}
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+      }
+    }
